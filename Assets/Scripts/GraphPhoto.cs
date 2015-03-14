@@ -5,7 +5,7 @@ public class GraphPhoto : MonoBehaviour {
 
 	public string description; 
 	public Vector3 pointB;
-	
+
 	IEnumerator Start () {
 		Vector3 pointA = transform.position;
 		while (true) {
@@ -24,14 +24,7 @@ public class GraphPhoto : MonoBehaviour {
 		}
 	}
 
-
-	// Use this for initialization
-//	void Start () {
-//	
-//	}
-	
 	// Update is called once per frame
 	void Update () {
-
-	}
+	}	
 }
