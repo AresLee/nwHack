@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e484e28daa7432594877c0d2a0cd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: 
+  pointB: {x: 1, y: 1, z: 5}
 --- !u!23 &1078882247
 Renderer:
   m_ObjectHideFlags: 0
@@ -583,6 +585,18 @@ Prefab:
     - target: {fileID: 435784, guid: 8ae2b23e245bc4db0b9d48c33731becd, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435784, guid: 8ae2b23e245bc4db0b9d48c33731becd, type: 2}
+      propertyPath: pointB.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435784, guid: 8ae2b23e245bc4db0b9d48c33731becd, type: 2}
+      propertyPath: pointB.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11435784, guid: 8ae2b23e245bc4db0b9d48c33731becd, type: 2}
+      propertyPath: pointB.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ae2b23e245bc4db0b9d48c33731becd, type: 2}
