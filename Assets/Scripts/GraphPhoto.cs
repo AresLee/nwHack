@@ -36,7 +36,7 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 			
 			// Vibrate the Myo armband when a fist is made.
 			if (thalmicMyo.pose == Pose.Fist) {
-				thalmicMyo.Vibrate (VibrationType.Medium);
+				//thalmicMyo.Vibrate (VibrationType.Medium);
 				
 				ExtendUnlockAndNotifyUserAction (thalmicMyo);
 				
@@ -55,7 +55,7 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 				
 				ExtendUnlockAndNotifyUserAction (thalmicMyo);
 			} else if (thalmicMyo.pose == Pose.DoubleTap) {
-
+				transform.position =  startPos;
 				
 				ExtendUnlockAndNotifyUserAction (thalmicMyo);
 			}
