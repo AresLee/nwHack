@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1403887280}
   - 114: {fileID: 1344829036}
+  - 114: {fileID: 1403887278}
   m_Layer: 0
   m_Name: Dive_Camera
   m_TagString: MainCamera
@@ -266,6 +267,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1403887278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1403887277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beee59077c50e4fdca6092f28a57a0a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectHit: {fileID: 0}
 --- !u!4 &1403887280
 Transform:
   m_ObjectHideFlags: 0

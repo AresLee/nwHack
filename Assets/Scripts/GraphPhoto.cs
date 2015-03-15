@@ -1,16 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GraphPhoto : MonoBehaviour {
+public class GraphPhoto : MonoBehaviour, IGazeable {
 
 	public string description; 
 	public Vector3 pointB;
+	private bool isGazedAt = false;
 
 	IEnumerator Start () {
 		Vector3 pointA = transform.position;
 		while (true) {
-			yield return StartCoroutine(MoveObject(transform, pointA, pointB, 3.0f));
-			yield return StartCoroutine(MoveObject(transform, pointB, pointA, 3.0f));
+			if (isGazedAt) {
+				yield return StartCoroutine (MoveObject (transform, pointA, pointB, 3.0f));
+			} else {
+				yield return StartCoroutine (MoveObject (transform, pointB, pointA, 3.0f));
+			}
 		}
 	}
 	
@@ -27,4 +31,12 @@ public class GraphPhoto : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}	
+
+	public void reactToGaze() {
+		isGazedAt = true;
+	}
+
+	public void endGaze() {
+		isGazedAt = false;
+	}
 }

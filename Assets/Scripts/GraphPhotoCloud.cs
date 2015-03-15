@@ -3,16 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class GraphPhotoCloud : MonoBehaviour {
+public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
 	List<GameObject> graphPhotos;
 	private int maxPhotosInRow = 12;
 
 	// Use this for initialization
 	void Start () {
-		graphPhotos = populateGraphList ();
-			//new List<GraphPhoto> ();
-		
+		graphPhotos = populateGraphList ();	
 	}
 	
 	// Update is called once per frame
@@ -41,5 +39,13 @@ public class GraphPhotoCloud : MonoBehaviour {
 		pos.y = transform.position.y;
 		pos.z = transform.position.z + radius*Mathf.Cos(angle); 
 		return pos;
+	}
+
+	public void reactToGaze() {
+		//isGazedAt = true;
+	}
+	
+	public void endGaze() {
+		//isGazedAt = false;
 	}
 }
