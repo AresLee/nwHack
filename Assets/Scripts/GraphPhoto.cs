@@ -22,15 +22,14 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 
 	void Update () {
 		float step = speed * Time.deltaTime;
-		Vector3 scale = new Vector3(1.3f, 1.3f, 1.3f);
 		if (isGazedAt) {
 			//transform.position = Vector3.MoveTowards (transform.position, endPos, step*2);
-			transform.localScale = Vector3.Lerp(Vector3.one,scale,step);
+			transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
 		} else {
 			if(transform.position != startPos) {
 				transform.position = Vector3.MoveTowards (transform.position, startPos, step);
 			}
-			transform.localScale = Vector3.Lerp(scale,Vector3.one,step);
+			transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 		}
 	}	
 
