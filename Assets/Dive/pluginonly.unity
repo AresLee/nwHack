@@ -285,8 +285,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
   m_PrefabInternal: {fileID: 1499093508}
   m_GameObject: {fileID: 1403887277}
-  m_LocalRotation: {x: -.0505447313, y: -.972406328, z: .0948915035, w: -.207043067}
-  m_LocalPosition: {x: -4.85613441, y: 3.47572064, z: 9.28198242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1824160285}
@@ -302,31 +302,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.85613441
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.47572064
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 9.28198242
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.0505447313
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.972406328
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalRotation.z
-      value: .0948915035
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -.207043067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9069ff3d504c93343bc5c9a6d99a845b, type: 2}
       propertyPath: m_RootMapOrder

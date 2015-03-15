@@ -16,7 +16,8 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 	void Start () {
 		camera = GameObject.FindGameObjectWithTag ("MainCamera");
 		startPos = transform.position;
-		endPos = (startPos - camera.transform.position).normalized * 10.0f;
+		GraphPhotoCloud graphPhotoCloud = (GraphPhotoCloud)GameObject.FindObjectOfType (typeof(GraphPhotoCloud));
+		endPos = graphPhotoCloud.calculatePositionOnFibonacciSphere(this, 8.0f);
 	}
 
 	void Update () {
