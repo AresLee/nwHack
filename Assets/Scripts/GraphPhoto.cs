@@ -7,13 +7,16 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 	private Vector3 endPos;
 	public string description; 	
 	public float speed = 12.0f;
+	public int index;
 	private bool isGazedAt = false;
+
 	GameObject camera;
+
 
 	void Start () {
 		camera = GameObject.FindGameObjectWithTag ("MainCamera");
 		startPos = transform.position;
-		endPos = (-camera.transform.position + startPos).normalized * 10.0f;
+		endPos = (startPos - camera.transform.position).normalized * 10.0f;
 	}
 
 	void Update () {

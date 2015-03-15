@@ -5,7 +5,7 @@ using System;
 
 public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
-	List<GameObject> graphPhotos;
+	List<GraphPhoto> graphPhotos;
 	private int sampleSize = 24;
 	private float photoSpacing = 11.0f;
 
@@ -17,36 +17,37 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 	
 	}
 
-	List<GameObject> populateGraphList ()
+	List<GraphPhoto> populateGraphList ()
 	{
-		graphPhotos = new List<GameObject> ();
+		graphPhotos = new List<GraphPhoto> ();
 		for (int i = 0; i < sampleSize; i++) {
-			GameObject photo = (GameObject)Instantiate(Resources.Load("GraphPhoto"));
+			GraphPhoto photo = Instantiate(Resources.Load("GraphPhoto", typeof(GraphPhoto))) as GraphPhoto;
+			photo.index = i;
 			photo.transform.parent = GameObject.Find ("GraphPhotoCloud").transform;
-			photo.transform.position =  distributePhotosOnFibonacciSphere(i, photo);
+			float scale = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
+			photo.transform.position =  calculatePositionOnFibonacciSphere(photo, scale);
 			graphPhotos.Add(photo);
 		}
 		return graphPhotos;
 	}
 
-	Vector3 distributePhotosOnFibonacciSphere (int i, GameObject photo)
+	public Vector3 calculatePositionOnFibonacciSphere (GraphPhoto photo, float scale)
 	{	
 		float rnd = 1.0f;
 		//float rnd = Random.value() * sampleSize;
 		float inc =  Mathf.PI  * (3.0f - Mathf.Sqrt(5.0f));
 		float off = 2.0f / sampleSize;
-		float y = i * off - 1.0f + (off / 2.0f);
+		float y = photo.index * off - 1.0f + (off / 2.0f);
 		float radius = Mathf.Sqrt(1.0f - y*y);
-		float phi = ((i + rnd) % sampleSize) * inc;
-		float scale = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
+		float phi = ((photo.index + rnd) % sampleSize) * inc;
 		return new Vector3((Mathf.Cos(phi)*radius), y, Mathf.Sin(phi)*radius)*scale;
 
 	}
 
-	Vector3 distributePhotosOnCircle (int i, GameObject photo)
+	public Vector3 calculatePositionOnCircle (GraphPhoto photo, float scale)
 	{	
-		float radius = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
-		float theta = i * 2*Mathf.PI / sampleSize;
+		float radius = scale;
+		float theta = photo.index * 2*Mathf.PI / sampleSize;
 		Vector3 pos = new Vector3();
 		pos.x = transform.position.x + radius*Mathf.Sin(theta); 
 		pos.y = transform.position.y;
