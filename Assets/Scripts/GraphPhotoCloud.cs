@@ -7,7 +7,7 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
 	List<GameObject> graphPhotos;
 	private int sampleSize = 24;
-	public float photoSpacing = 500.0f;
+	private float photoSpacing = 11.0f;
 
 	void Start () {
 		graphPhotos = populateGraphList ();	
@@ -27,17 +27,6 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 			graphPhotos.Add(photo);
 		}
 		return graphPhotos;
-	}
-
-	Vector3 distributePhotosOnSphere (int i, GameObject photo)
-	{	
-		float inc =  Mathf.PI  * (3.0f - Mathf.Sqrt(5.0f));
-		float off = 2.0f / sampleSize;
-		float y = i * off - 1.0f + (off / 2.0f);
-		float radius = Mathf.Sqrt(1.0f - y*y) * 50.0f;
-		//float radius = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
-		float phi = i * inc;
-		return new Vector3((Mathf.Cos(phi)*radius), y, Mathf.Sin(phi)*radius);
 	}
 
 	Vector3 distributePhotosOnFibonacciSphere (int i, GameObject photo)
