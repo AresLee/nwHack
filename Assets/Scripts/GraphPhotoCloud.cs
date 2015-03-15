@@ -6,8 +6,8 @@ using System;
 public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
 	List<GameObject> graphPhotos;
-	private int sampleSize = 12;
-	public float photoSpacing = 3.0f;
+	private int sampleSize = 24;
+	public float photoSpacing = 500.0f;
 
 	void Start () {
 		graphPhotos = populateGraphList ();	
@@ -23,7 +23,7 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 		for (int i = 0; i < sampleSize; i++) {
 			GameObject photo = (GameObject)Instantiate(Resources.Load("GraphPhoto"));
 			photo.transform.parent = GameObject.Find ("GraphPhotoCloud").transform;
-			photo.transform.position =  distributePhotosOnSphere(i, photo);
+			photo.transform.position =  distributePhotosOnFibonacciSphere(i, photo);
 			graphPhotos.Add(photo);
 		}
 		return graphPhotos;
@@ -31,13 +31,27 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
 	Vector3 distributePhotosOnSphere (int i, GameObject photo)
 	{	
-		float inc =  Mathf.PI  * (3 - Mathf.Sqrt(5));
-		float off = 2 / sampleSize;
-		float y = i * off - 1 + (off / 2);
-		float radius = Mathf.Sqrt(1 - y*y);
-		//float radius = photo.renderer.bounds.size.magnitude * maxPhotosInRow / photoSpacing;
+		float inc =  Mathf.PI  * (3.0f - Mathf.Sqrt(5.0f));
+		float off = 2.0f / sampleSize;
+		float y = i * off - 1.0f + (off / 2.0f);
+		float radius = Mathf.Sqrt(1.0f - y*y) * 50.0f;
+		//float radius = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
 		float phi = i * inc;
 		return new Vector3((Mathf.Cos(phi)*radius), y, Mathf.Sin(phi)*radius);
+	}
+
+	Vector3 distributePhotosOnFibonacciSphere (int i, GameObject photo)
+	{	
+		float rnd = 1.0f;
+		//float rnd = Random.value() * sampleSize;
+		float inc =  Mathf.PI  * (3.0f - Mathf.Sqrt(5.0f));
+		float off = 2.0f / sampleSize;
+		float y = i * off - 1.0f + (off / 2.0f);
+		float radius = Mathf.Sqrt(1.0f - y*y);
+		float phi = ((i + rnd) % sampleSize) * inc;
+		float scale = photo.renderer.bounds.size.magnitude * sampleSize / photoSpacing;
+		return new Vector3((Mathf.Cos(phi)*radius), y, Mathf.Sin(phi)*radius)*scale;
+
 	}
 
 	Vector3 distributePhotosOnCircle (int i, GameObject photo)
