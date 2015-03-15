@@ -6,7 +6,7 @@ public class GraphPhoto : MonoBehaviour, IGazeable {
 	private Vector3 startPos;
 	public Vector3 endPos;
 	public string description; 	
-	public float speed = 5.0f;
+	public float speed = 12.0f;
 	private bool isGazedAt = false;
 
 	void Start () {

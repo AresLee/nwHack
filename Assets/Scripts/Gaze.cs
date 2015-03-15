@@ -14,12 +14,13 @@ public class Gaze : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Physics.Raycast(transform.position, Vector3.forward, out raycastHit, 1000.0f)) 
+		if(Physics.Raycast(transform.position, transform.forward, out raycastHit, 1000.0f)) 
 		{
 			Collider raycastHitCollider = raycastHit.collider;
 			gameObjectHit = raycastHit.transform.gameObject;
 
-			//Debug.Log("You hit something"+raycastHit.ToString());
+//			Debug.Log("You hit something"+raycastHit.ToString());
+//			Debug.Log(transform.position-raycastHitCollider.transform.position);
 
 			IGazeable gazeable = 
 				raycastHitCollider.gameObject.GetComponent(typeof(IGazeable)) as IGazeable;

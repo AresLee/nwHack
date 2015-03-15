@@ -8,12 +8,10 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 	List<GameObject> graphPhotos;
 	private int maxPhotosInRow = 12;
 
-	// Use this for initialization
 	void Start () {
 		graphPhotos = populateGraphList ();	
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 	}
@@ -32,7 +30,7 @@ public class GraphPhotoCloud : MonoBehaviour, IGazeable {
 
 	Vector3 positionAroundCircle (int i, GameObject unit)
 	{	
-		float radius = unit.renderer.bounds.size.magnitude * maxPhotosInRow / 2;
+		float radius = unit.renderer.bounds.size.magnitude * maxPhotosInRow / 3;
 		float angle = i * 2*Mathf.PI / maxPhotosInRow;
 		Vector3 pos = new Vector3();
 		pos.x = transform.position.x + radius*Mathf.Sin(angle); 
