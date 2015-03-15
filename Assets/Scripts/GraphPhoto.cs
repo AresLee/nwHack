@@ -3,30 +3,25 @@ using System.Collections;
 
 public class GraphPhoto : MonoBehaviour, IGazeable {
 
-	public string description; 
-	public Vector3 pointB;
+	private Vector3 startPos;
+	public Vector3 endPos;
+	public string description; 	
+	public float speed = 5.0f;
 	private bool isGazedAt = false;
 
 	void Start () {
-		Vector3 pointA = transform.position;
-			if (isGazedAt) {
-				MoveObject (transform, pointA, pointB, 3.0f);
-			} else {
-				MoveObject (transform, pointB, pointA, 3.0f);
-			}
-	}
-	
-	void MoveObject (Transform thisTransform, Vector3 startPos, Vector3 endPos, float time) {
-		float i = 0.0f;
-		float rate = 1.0f / time;
-		while (i < 1.0f) {
-			i += Time.deltaTime * rate;
-			thisTransform.position = Vector3.Lerp(startPos, endPos, i);
-		}
+		startPos = transform.position;
 	}
 
-	// Update is called once per frame
 	void Update () {
+		float step = speed * Time.deltaTime;
+		if (isGazedAt) {
+			transform.position = Vector3.MoveTowards (transform.position, endPos, step);
+		} else {
+			if(transform.position != startPos) {
+				transform.position = Vector3.MoveTowards (transform.position, startPos, step);
+			}
+		}
 	}	
 
 	public void reactToGaze() {
