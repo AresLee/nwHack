@@ -2,5 +2,13 @@
 using System.Collections;
 
 public class Billboard : MonoBehaviour {
-		void Update() { transform.LookAt(Camera.main.transform.position, -Vector3.up); } 
+	GameObject camera;
+	void Start() {
+		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+	}
+
+	void Update() { 
+		transform.LookAt(camera.transform.position);
+		transform.rotation *= Quaternion.Euler (90, 0, 0);
+	} 
 }
